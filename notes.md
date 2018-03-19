@@ -23,14 +23,16 @@
 
 This is just an initial proposal, meant to be discussed and edited. You can also
 run demos for each of the cases listed below from within the `scripts/`
-directory by doing:
-
-    % python demo.py 1
-    % python demo.py 2
-    % python demo.py 3
+directory (see points below).
 
 * Calling `citation` with a string will use `importlib` to try to import the
   package and will just return the contents of `__citation__`. For example:
+
+    ```bash
+    % python demo.py 1
+    ```
+
+    or
 
     ```python
     >>> print(citation('astroML'))
@@ -51,6 +53,12 @@ directory by doing:
 
 * Calling `citation` with a package or module just returned `__citation__`:
 
+    ```bash
+    % python demo.py 2
+    ```
+
+    or
+
     ```python
     >>> import astroML
     >>> print(citation(astroML))
@@ -67,7 +75,13 @@ directory by doing:
     ```
 
 * Calling `citation` with no arguments finds all imported modules and returns a
-  dictionary containing `__citation__` contents for all:
+  dictionary containing `__citation__` contents for all:    
+
+    ```bash
+    % python demo.py 3
+    ```
+
+    or
 
     ```python
     >>> import astroML
