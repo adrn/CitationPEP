@@ -1,0 +1,69 @@
+PEP: 9999
+Title: Sample reStructuredText PEP Template
+Author: Adrian Price-Whelan <adrianmpw@gmail.com>,
+        ...others!
+Status: Draft
+Type: Standards Track
+Content-Type: text/x-rst
+Created: XX-Mar-2018
+Python-Version: 3.7
+Post-History: XX-XXX-2018
+
+TODO:
+* Send your PEP submission to the PEP editors at peps@python.org
+
+Formatting requirements (from PEP0012):
+=======================================
+* You must adhere to the Emacs convention of adding two spaces at the end of
+every sentence.
+* Fill your paragraphs to column 70, but under no circumstances should your
+lines extend past column 79.
+* You must use two blank lines between the last line of a section's body
+and the next section heading
+* When referencing an external web page in the body of a PEP, you should include
+the title of the page in the text, with either an inline hyperlink reference to
+the URL or a footnote reference
+* If your PEP contains a diagram, you may include it in the processed
+output using the "image" directive::
+
+    .. image:: diagram.png
+
+    ..
+        Comment block for the image description.
+
+* But, since this image will not be visible to readers of the PEP in source text
+form, you should consider including a description or ASCII art alternative,
+using a comment (below).
+
+Abstract
+========
+
+(short - a few sentence overview of the content and recommendations)
+This PEP
+
+
+Rationale
+=========
+
+Python has been embraced as a fundamental programming language in the scientific
+community. [But we all need attribution for the work we do.]
+
+
+
+
+
+Copyright
+=========
+
+This document has been placed in the public domain.
+
+
+
+..
+   Local Variables:
+   mode: indented-text
+   indent-tabs-mode: nil
+   sentence-end-double-space: t
+   fill-column: 70
+   coding: utf-8
+   End:
