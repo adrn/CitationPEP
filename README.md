@@ -11,3 +11,12 @@ http://dx.doi.org/10.1051/0004-6361/201322068
 >>> citation(astropy)
 http://dx.doi.org/10.1051/0004-6361/201322068
 ```
+
+## Authors
+
+* Adrian Price-Whelan (@adrn)
+* Kelle Cruz (@kelle)
+* Tom Robitaille (@astrofrog)
+* Arfon Smith (@arfon)
+* Erik Tollerud (@eteq)
+* Jake Vanderplas (@jakevdp)
