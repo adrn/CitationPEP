@@ -12,6 +12,9 @@ http://dx.doi.org/10.1051/0004-6361/201322068
 http://dx.doi.org/10.1051/0004-6361/201322068
 ```
 
+See [the NOTES](https://github.com/adrn/CitationPEP/blob/master/NOTES.md) for
+more information.
+
 ## Authors
 
 * Adrian Price-Whelan ([@adrn](https://github.com/adrn))
