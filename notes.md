@@ -21,7 +21,13 @@
 
 # API
 
-This is just an initial proposal, meant to be discussed and edited.
+This is just an initial proposal, meant to be discussed and edited. You can also
+run demos for each of the cases listed below from within the `scripts/`
+directory by doing:
+
+    % python demo.py 1
+    % python demo.py 2
+    % python demo.py 3
 
 * Calling `citation` with a string will use `importlib` to try to import the
   package and will just return the contents of `__citation__`. For example:
