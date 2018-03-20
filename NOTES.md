@@ -19,6 +19,10 @@
 * [PeakPro](https://github.com/SHDShim/PeakPo)
 * [instamatic](https://github.com/stefsmeets/instamatic/blob/b741a5d119f16f79a94adb9c96dfb4b48fafb784/instamatic/version.py)
 
+### Misc.
+
+* R added `citation()` in [June 2004](https://github.com/wch/r-source/commits/153c6ca05e11e8c5ff53fd03d33e33ecaae5ec57?after=153c6ca05e11e8c5ff53fd03d33e33ecaae5ec57+104&path%5B%5D=src&path%5B%5D=library&path%5B%5D=utils&path%5B%5D=R&path%5B%5D=citation.R) (first appeared in 1993) -- can we see that after this was added, cited more?
+
 # API
 
 This is just an initial proposal, meant to be discussed and edited. You can also
@@ -102,3 +106,6 @@ directory (see points below).
     }
     citationpep This is a demo citation!
     ```
+
+* TODO: if a package doesn't define __citation__, but has a CITATION file,
+  should we read it and return that?

@@ -1,5 +1,5 @@
 PEP: 9999
-Title: Sample reStructuredText PEP Template
+Title: A standard variable for citations and a builtin function to extract them
 Author: Adrian Price-Whelan <adrianmpw@gmail.com>,
         ...others!
 Status: Draft
@@ -38,8 +38,18 @@ using a comment (below).
 Abstract
 ========
 
-(short - a few sentence overview of the content and recommendations)
-This PEP
+This PEP proposes (1) a new, soft standard for packages to define their own
+preferred manner of citation, and (2) a new builtin function to extract this
+information.
+
+This functionality is motivated by the increase in support for citing software
+in scientific journals, and the need to make citations more visible to users.
+
+The programming language R has similar
+
+::
+
+
 
 
 Rationale
@@ -48,8 +58,15 @@ Rationale
 Python has been embraced as a fundamental programming language in the scientific
 community. [But we all need attribution for the work we do.]
 
+CITATION file in source not enough for scientists.
 
 
+References
+==========
+
+.. [#Rcitation] R citation function, "Citing R", R FAQ
+
+    https://cran.r-project.org/doc/FAQ/R-FAQ.html#Citing-R
 
 
 Copyright
