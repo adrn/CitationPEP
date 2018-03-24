@@ -1,7 +1,7 @@
 PEP: 9999
 Title: A standard variable for citations and a builtin function to extract them
 Author: Adrian Price-Whelan <adrianmpw@gmail.com>,
-        ...others!
+        others!
 Status: Draft
 Type: Standards Track
 Content-Type: text/x-rst
@@ -40,25 +40,26 @@ Abstract
 
 This PEP proposes (1) a new, soft standard for packages to define their own
 preferred manner of citation, and (2) a new builtin function to extract this
-information.
-
-This functionality is motivated by the increase in support for citing software
-in scientific journals, and the need to make citations more visible to users.
-
-The programming language R has similar
-
-::
-
-
+information. This functionality is motivated by the recent increase in support
+for citing software in scientific journals, and the need to make citations more
+visible to users.
 
 
 Rationale
 =========
 
-Python has been embraced as a fundamental programming language in the scientific
-community. [But we all need attribution for the work we do.]
+Python has been adopted as a fundamental programming language in the scientific
+community. As an example from astronomical journals, the figure below shows mentions to
 
-CITATION file in source not enough for scientists.
+.. image:: python-ads.png
+
+..
+    Figure showing the exponential increase of mentions of the word "Python" over time in the astronomical literature. Figure also shows the decline in number or constant number of mentions to other scripting languages Perl, Matlab, and IDL.
+
+Key points:
+- Show plot of Python mentions vs. time
+- Scipy, numpy, astropy mentions vs. citations
+- CITATION file in source not enough for scientists.
 
 
 References
