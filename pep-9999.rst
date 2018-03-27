@@ -142,8 +142,8 @@ implemented in the proposed new builtin package, `set_citation`::
     ...     return
 
 
-New builtin package `citation`
-------------------------------
+New builtin package: `citation`
+-------------------------------
 
 As alluded to above, the new functionality proposed here motivates a new
 standard-library package for handling citation information.  This package could
@@ -225,7 +225,6 @@ variable is found::
      address = {Piscataway, NJ, USA},
      keywords = {NumPy, Python, Python, NumPy, scientific programming, numerical computations, programming libraries, numerical computations, programming libraries, scientific programming},
     }
-
 
 
 References
