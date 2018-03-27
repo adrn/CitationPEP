@@ -227,6 +227,13 @@ variable is found::
     }
 
 
+Reference implementation
+========================
+
+TODO: make this package installable (i.e. add a setup.py) and describe this as a
+demo implementation.
+
+
 References
 ==========
 
