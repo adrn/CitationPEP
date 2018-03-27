@@ -12,28 +12,28 @@ Post-History: XX-XXX-2018
 TODO:
 * Send your PEP submission to the PEP editors at peps@python.org
 
-Formatting requirements (from PEP0012):
-=======================================
-* You must adhere to the Emacs convention of adding two spaces at the end of
-every sentence.
-* Fill your paragraphs to column 70, but under no circumstances should your
-lines extend past column 79.
-* You must use two blank lines between the last line of a section's body
-and the next section heading
-* When referencing an external web page in the body of a PEP, you should include
-the title of the page in the text, with either an inline hyperlink reference to
-the URL or a footnote reference
-* If your PEP contains a diagram, you may include it in the processed
-output using the "image" directive::
-
-    .. image:: diagram.png
-
-    ..
-        Comment block for the image description.
-
-* But, since this image will not be visible to readers of the PEP in source text
-form, you should consider including a description or ASCII art alternative,
-using a comment (below).
+.. Formatting requirements (from PEP0012):
+.. =======================================
+.. * You must adhere to the Emacs convention of adding two spaces at the end of
+.. every sentence.
+.. * Fill your paragraphs to column 70, but under no circumstances should your
+.. lines extend past column 79.
+.. * You must use two blank lines between the last line of a section's body
+.. and the next section heading
+.. * When referencing an external web page in the body of a PEP, you should include
+.. the title of the page in the text, with either an inline hyperlink reference to
+.. the URL or a footnote reference
+.. * If your PEP contains a diagram, you may include it in the processed
+.. output using the "image" directive::
+..
+..     .. image:: diagram.png
+..
+..     ..
+..         Comment block for the image description.
+..
+.. * But, since this image will not be visible to readers of the PEP in source text
+.. form, you should consider including a description or ASCII art alternative,
+.. using a comment (below).
 
 Abstract
 ========
@@ -224,7 +224,7 @@ variable is found::
      publisher = {IEEE Educational Activities Department},
      address = {Piscataway, NJ, USA},
      keywords = {NumPy, Python, Python, NumPy, scientific programming, numerical computations, programming libraries, numerical computations, programming libraries, scientific programming},
-    } 
+    }
 
 
 
