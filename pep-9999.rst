@@ -40,35 +40,99 @@ Abstract
 
 This PEP proposes (1) a new, soft standard for packages to define their own
 preferred manner of citation, and (2) a new builtin function to extract this
-information. This functionality is motivated by the recent increase in support
+information.  This functionality is motivated by the recent increase in support
 for citing software in scientific journals, and the need to make citations more
-visible to users.
+visible to users once the software is installed.
 
 
 Rationale
 =========
 
-Python has been adopted as a fundamental programming language in the scientific
-community. As an example from astronomical journals, the figure below shows mentions to
+Python has been adopted as a fundamental programming language in many scientific
+communities.  Researchers are transitioning from paid, closed-source and
+subscription-based scripting languages like MATLAB and IDL and are embracing
+open source software and Python.  For example, in the astronomy and astrophysics
+fields, mentions of Python in publications are growing exponentially, while
+mentions of other languages are declining or flattening with time:
 
 .. image:: python-ads.png
 
 ..
-    Figure showing the exponential increase of mentions of the word "Python" over time in the astronomical literature. Figure also shows the decline in number or constant number of mentions to other scripting languages Perl, Matlab, and IDL.
+    Figure showing the exponential increase of mentions of the word "Python"
+    over time in the astronomical literature. Figure also shows the decline in
+    number or constant number of mentions to other scripting languages Perl,
+    Matlab, and IDL.
 
-Key points:
-- Show plot of Python mentions vs. time
-- Scipy, numpy, astropy mentions vs. citations
-- CITATION file in source not enough for scientists.
+Mentions or acknowledgements help increase visibility of programming languages
+and software packages.  However, the current attribution system in all
+scientific fields rewards explicit citations or references.  Software citations
+provide credit to contributors, and also provide a means to uniquely identify
+packages and contributors [#SmithAM]_.  Thankfully, scientific journals are now
+beginning to allow and encourage citing software (e.g., [#AASsoftware]_).
+
+Many packages with citable records now provide instructions for how to attribute
+and cite the software.  For example, many packages now provide a `CITATION` file
+at the root of the project source with such information [#githubcitation]_.
+This is extremely valuable for users who know to check the software source code.
+However, many users (and especially scientists) tend to install software from
+pre-built binaries or distributions (using, e.g., `pip` or `anaconda`
+[#anaconda]_).  These users then have to locate the software source in order to
+find the citation method requested by the package.
+
+At least one other programming language provides an easier way to access this
+information: The R project [#Rproject]_ provides a builtin function,
+`citation()`, for accessing the standard language reference (as a Bibtex entry),
+and for retrieving the same from packages [#Rcitation]_.
+
+The functionality proposed in this PEP is meant to increase the visibility of
+citation mechanisms for Python packages.
+
+
+Specification
+=============
+
+The current proposal includes two key changes: (1) To define a standard for
+packages to store information relevant to attribution or citation of the
+software, and (2) to propose a new builtin function to access this information
+for individual packages, or for all imported packages.
+
+
+Package-level citation variable
+-------------------------------
+
+
+
+New builtin `citation()`
+------------------------
+
 
 
 References
 ==========
 
+.. [#AASsoftware] "Policy Statement on Software"
+
+    https://journals.aas.org/policy/software.html
+
+.. [#SmithAM] "Software citation principles"
+
+    https://peerj.com/articles/cs-86/
+
+.. [#githubcitation] Search for CITATION files on GitHub
+
+    https://github.com/search?utf8=%E2%9C%93&q=filename%3ACITATION+path%3A%2F&type=Code
+
+.. [#anaconda] Anaconda distribution
+
+    https://anaconda.org/
+
+.. [#Rproject] R project
+
+    https://cran.r-project.org/
+
 .. [#Rcitation] R citation function, "Citing R", R FAQ
 
     https://cran.r-project.org/doc/FAQ/R-FAQ.html#Citing-R
-
 
 Copyright
 =========
