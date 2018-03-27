@@ -39,10 +39,11 @@ Abstract
 ========
 
 This PEP proposes (1) a new, soft standard for packages to define their own
-preferred manner of citation, and (2) a new builtin function to extract this
-information.  This functionality is motivated by the recent increase in support
-for citing software in scientific journals, and the need to make citations more
-visible to users once the software is installed.
+preferred manner of citation, and (2) a new builtin package with a function to
+extract this information and tools to help define citations.  This functionality
+is motivated by the recent increase in support for citing software in scientific
+journals, and the need to make citations more visible to users once the software
+is installed.
 
 
 Rationale
@@ -93,17 +94,137 @@ Specification
 
 The current proposal includes two key changes: (1) To define a standard for
 packages to store information relevant to attribution or citation of the
-software, and (2) to propose a new builtin function to access this information
-for individual packages, or for all imported packages.
+software, and (2) to propose a new builtin package with functionality to define
+and access this information for individual packages, or for all imported
+packages.
 
 
 Package-level citation variable
 -------------------------------
 
+Packages that would like to provide citation information can define the variable
+`__citation__` and make this accessible from the package root.  It's up to the
+package to determine the best way to provide this information, but as some
+examples, this variable could be a string link to a digital object identifier
+(DOI), a string Bibtex entry, a list of Bibtex entries, or a custom object with
+more functionality.  For example::
+
+    >>> import astropy
+    >>> print(astropy.__citation__)
+    https://doi.org/10.1051/0004-6361/201322068
+
+Some packages will require more fine-tuned control over citation records.  For
+example, the Scipy [#scipy]_ package may want to expose additional citations for
+each subpackage, and then for classes or functions within each subpackage, e.g.,
+
+::
+
+    >>> import scipy
+    >>> print(scipy.__citation__)
+    @Misc{,
+      author =    {Eric Jones and Travis Oliphant and Pearu Peterson and others},
+      title =     {{SciPy}: Open source scientific tools for {Python}},
+      year =      {2001--},
+      url = "http://www.scipy.org/",
+      note = {[Online; accessed <today>]}
+    }
+    >>> import scipy.optimize as so
+    >>> print(so.minimize_powell.__citation__)
+    Powell, M J D. 1964. An efficient method for finding the minimum of a function of several variables without calculating derivatives. The Computer Journal 7: 155-162.
+
+Attaching a citation to a class or a function could be done with a new decorator
+implemented in the proposed new builtin package, `set_citation`::
+
+    >>> from citation import set_citation
+    >>> @set_citation('https://doi.org/10.1051/0004-6361/201322068')
+    ... def my_function():
+    ...     # spam spam spam
+    ...     return
 
 
-New builtin `citation()`
-------------------------
+New builtin package `citation`
+------------------------------
+
+As alluded to above, the new functionality proposed here motivates a new
+standard-library package for handling citation information.  This package could
+contain a decorator to set the citation on classes or functions
+(`set_citation()`, see above), a function to retrieve citation information from
+a package, object, or the entire namespace, (`citation()`), and a class for
+storing more detailed citation information (`Citation`).
+
+Calling `citation()` with a string will use `importlib` to try to import the
+package and will just return the contents of `__citation__`. For example::
+
+    >>> from citation import citation
+    >>> print(citation('astroML'))
+    @INPROCEEDINGS{astroML,
+     author={{Vanderplas}, J.T. and {Connolly}, A.J.
+             and {Ivezi{'c}}, { Z}. and {Gray}, A.},
+     booktitle={Conference on Intelligent Data Understanding (CIDU)},
+     title={Introduction to astroML: Machine learning for astrophysics},
+     month={Oct.},
+     pages={47 -54},
+     doi={10.1109/CIDU.2012.6382200},
+     year={2012}
+    }
+    >>> import astroML
+    >>> citation('astroML') == astroML.__citation__
+
+Calling `citation()` with a package or module returns `__citation__`::
+
+    >>> import astroML
+    >>> print(citation(astroML))
+    @INPROCEEDINGS{astroML,
+     author={{Vanderplas}, J.T. and {Connolly}, A.J.
+             and {Ivezi{'c}}, { Z}. and {Gray}, A.},
+     booktitle={Conference on Intelligent Data Understanding (CIDU)},
+     title={Introduction to astroML: Machine learning for astrophysics},
+     month={Oct.},
+     pages={47 -54},
+     doi={10.1109/CIDU.2012.6382200},
+     year={2012}
+    }
+
+Calling `citation` with no arguments finds all imported modules and returns a
+dictionary containing `__citation__` contents for all packages where the
+variable is found::
+
+    >>> import astroML
+    >>> import numpy
+    >>> for pkg, cite in citation().items():
+    ...     print(pkg, cite, end='\n\n')
+    ...
+    astroML @INPROCEEDINGS{astroML,
+     author={{Vanderplas}, J.T. and {Connolly}, A.J.
+             and {Ivezi{'c}}, {
+                                Z}. and {Gray}, A.},
+     booktitle={Conference on Intelligent Data Understanding (CIDU)},
+     title={Introduction to astroML: Machine learning for astrophysics},
+     month={Oct.},
+     pages={47 -54},
+     doi={10.1109/CIDU.2012.6382200},
+     year={2012}
+    }
+
+    numpy @article{Walt:2011:NAS:1957373.1957466,
+     author = {Walt, Stefan van der and Colbert, S. Chris and Varoquaux, Gael},
+     title = {The NumPy Array: A Structure for Efficient Numerical Computation},
+     journal = {Computing in Science and Engg.},
+     issue_date = {March 2011},
+     volume = {13},
+     number = {2},
+     month = mar,
+     year = {2011},
+     issn = {1521-9615},
+     pages = {22--30},
+     numpages = {9},
+     url = {http://dx.doi.org/10.1109/MCSE.2011.37},
+     doi = {10.1109/MCSE.2011.37},
+     acmid = {1957466},
+     publisher = {IEEE Educational Activities Department},
+     address = {Piscataway, NJ, USA},
+     keywords = {NumPy, Python, Python, NumPy, scientific programming, numerical computations, programming libraries, numerical computations, programming libraries, scientific programming},
+    } 
 
 
 
@@ -133,6 +254,10 @@ References
 .. [#Rcitation] R citation function, "Citing R", R FAQ
 
     https://cran.r-project.org/doc/FAQ/R-FAQ.html#Citing-R
+
+.. [#scipy] Scipy documentation
+
+    https://docs.scipy.org/doc/
 
 Copyright
 =========
