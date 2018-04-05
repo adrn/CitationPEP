@@ -12,29 +12,6 @@ Post-History: XX-XXX-2018
 TODO:
 * Send your PEP submission to the PEP editors at peps@python.org
 
-.. Formatting requirements (from PEP0012):
-.. =======================================
-.. * You must adhere to the Emacs convention of adding two spaces at the end of
-.. every sentence.
-.. * Fill your paragraphs to column 70, but under no circumstances should your
-.. lines extend past column 79.
-.. * You must use two blank lines between the last line of a section's body
-.. and the next section heading
-.. * When referencing an external web page in the body of a PEP, you should include
-.. the title of the page in the text, with either an inline hyperlink reference to
-.. the URL or a footnote reference
-.. * If your PEP contains a diagram, you may include it in the processed
-.. output using the "image" directive::
-..
-..     .. image:: diagram.png
-..
-..     ..
-..         Comment block for the image description.
-..
-.. * But, since this image will not be visible to readers of the PEP in source text
-.. form, you should consider including a description or ASCII art alternative,
-.. using a comment (below).
-
 Abstract
 ========
 
@@ -64,12 +41,13 @@ mentions of other languages are declining or flattening with time:
     number or constant number of mentions to other scripting languages Perl,
     Matlab, and IDL.
 
-Mentions or acknowledgements help increase visibility of programming languages
-and software packages.  However, the current attribution system in all
-scientific fields rewards explicit citations or references.  Software citations
-provide credit to contributors, and also provide a means to uniquely identify
-packages and contributors [#SmithAM]_.  Thankfully, scientific journals are now
-beginning to allow and encourage citing software (e.g., [#AASsoftware]_).
+Mentions or acknowledgements in scientific papers help increase visibility of
+programming languages and software packages.  However, the current attribution
+system in all scientific fields rewards explicit citations or references.
+Software citations provide credit to contributors, and also provide a means to
+uniquely identify packages and contributors [#SmithAM]_.  Thankfully, scientific
+journals are now beginning to allow and encourage citing software (e.g.,
+[#AASsoftware]_).
 
 Many packages with citable records now provide instructions for how to attribute
 and cite the software.  For example, many packages now provide a `CITATION` file
@@ -83,7 +61,7 @@ find the citation method requested by the package.
 At least one other programming language provides an easier way to access this
 information: The R project [#Rproject]_ provides a builtin function,
 `citation()`, for accessing the standard language reference (as a Bibtex entry),
-and for retrieving the same from packages [#Rcitation]_.
+and for retrieving citations from packages [#Rcitation]_.
 
 The functionality proposed in this PEP is meant to increase the visibility of
 citation mechanisms for Python packages.
@@ -152,8 +130,8 @@ contain a decorator to set the citation on classes or functions
 a package, object, or the entire namespace, (`citation()`), and a class for
 storing more detailed citation information (`Citation`).
 
-Calling `citation()` with a string will use `importlib` to try to import the
-package and will just return the contents of `__citation__`. For example::
+Calling `citation()` with a string can use `importlib` to try to import the
+package and then just return the contents of `__citation__`. For example::
 
     >>> from citation import citation
     >>> print(citation('astroML'))
@@ -170,7 +148,8 @@ package and will just return the contents of `__citation__`. For example::
     >>> import astroML
     >>> citation('astroML') == astroML.__citation__
 
-Calling `citation()` with a package or module returns `__citation__`::
+Calling `citation()` with a package, module, function, or class returns the
+contents of `__citation__`::
 
     >>> import astroML
     >>> print(citation(astroML))
@@ -184,6 +163,12 @@ Calling `citation()` with a package or module returns `__citation__`::
      doi={10.1109/CIDU.2012.6382200},
      year={2012}
     }
+    >>> @set_citation('https://doi.org/10.1051/0004-6361/201322068')
+    ... def my_function():
+    ...     # spam spam spam
+    ...     return
+    >>> citation(my_function)
+    'https://doi.org/10.1051/0004-6361/201322068'
 
 Calling `citation` with no arguments finds all imported modules and returns a
 dictionary containing `__citation__` contents for all packages where the
